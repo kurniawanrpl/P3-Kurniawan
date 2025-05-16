@@ -1,0 +1,71 @@
+  public function index()
+{
+    // Ambil outlet_id dari user yang sedang login
+    $outlet_id = auth()->user()->outlet_id;
+
+    // Ambil semua transaksi berdasarkan outlet_id yang sesuai
+    $dataTransaksi = Transaksi::where('outlet_id', $outlet_id)
+        ->with('member', 'outlet') // Mengambil relasi member dan outlet
+        ->get();
+
+    // Ambil data paket laundry dan member untuk form
+    $paket = PaketLaundry::where('outlet_id', $outlet_id)->get();
+    $member = Member::where('outlet_id', $outlet_id)->get(); // Filter member berdasarkan outlet
+    $outlet = Outlet::all(); // Ambil semua outlet yang ada
+    $detail = session()->get('transaksi_temp', []);
+
+    return view('transaksi.index', compact('dataTransaksi', 'paket', 'member', 'outlet', 'detail', 'outlet_id'));
+}
+
+public function store(Request $request)
+{
+    $request->validate([
+        'outlet_id' => 'required',
+        'user_id' => 'required',
+        'metode_pembayaran' => 'required',
+    ]);
+
+    // Ambil data transaksi sementara
+    $detail = session()->get('transaksi_temp');
+
+    // Hitung total transaksi
+    $total = array_sum(array_column($detail, 'subtotal'));
+
+    // Simpan transaksi
+    $transaksi = Transaksi::create([
+        'outlet_id' => $request->outlet_id,
+        'user_id' => $request->user_id,
+        'member_id' => $request->member_id,
+        'total' => $total,
+        'metode_pembayaran' => $request->metode_pembayaran,
+        'status' => 'proses',
+        'kode_transaksi' => 'TRX-' . strtoupper(uniqid()),
+    ]);
+
+    // Simpan detail transaksi
+    foreach ($detail as $item) {
+        TransaksiDetail::create([
+            'transaksi_id' => $transaksi->id,
+            'paket_id' => $item['paket_id'],
+            'qty' => $item['qty'],
+            'subtotal' => $item['subtotal'],
+        ]);
+    }
+
+    // Jika metode pembayaran saldo, update saldo member
+    if ($request->metode_pembayaran == 'saldo' && $request->member_id) {
+        $member = Member::find($request->member_id);
+        if ($member && $member->saldo >= $total) {
+            $member->update(['saldo' => $member->saldo - $total]);
+        } else {
+            return back()->with('error', 'Saldo member tidak cukup!');
+        }
+    }
+
+    // Reset daftar transaksi sementara
+    session()->forget('transaksi_temp');
+
+    return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil disimpan!');
+}
+
+ini controler yang dulu

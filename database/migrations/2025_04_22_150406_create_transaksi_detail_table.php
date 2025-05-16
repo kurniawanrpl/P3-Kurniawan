@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('topup_saldo', function (Blueprint $table) {
+        Schema::create('transaksi_detail', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->constrained()->onDelete('cascade');
-            $table->decimal('nominal', 12, 2);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('transaksi_id')->constrained('transaksi')->onDelete('cascade');
+            $table->foreignId('paket_id')->constrained('paket_laundry')->onDelete('cascade');
+            $table->integer('qty');
+            $table->decimal('subtotal', 12, 2);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('topup_saldo');
+        Schema::dropIfExists('transaksi_detail');
     }
 };

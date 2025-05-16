@@ -17,6 +17,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'alamat',
+        'telepon',
         'password',
         'role',
         'outlet_id',
@@ -36,4 +38,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaksi::class);
     }
+    public function member()
+{
+    return $this->hasOne(Member::class);
+}
 }

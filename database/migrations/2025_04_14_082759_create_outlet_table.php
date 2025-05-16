@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_outlet');
             $table->text('alamat');
             $table->string('telepon');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

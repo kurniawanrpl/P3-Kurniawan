@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Prefix</title>
+      <title></title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -33,38 +33,32 @@
       <div class="header_section">
          <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-               <a class="navbar-brand"href="index.html"><img src="{{ asset('landing/images/logo.png') }}"></a>
+            <img src="https://png.pngtree.com/png-clipart/20220818/ourmid/pngtree-blue-washing-machine-for-laundry-logo-png-image_6114594.png" style="height: 100px;">
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                      <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="#home-us">Home</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link" href="#about-us">About</a>
                      </li>
+                    
+                    
                      <li class="nav-item">
-                        <a class="nav-link" href="pricing.html">Pricing Plans</a>
+                        <a class="nav-link" href="#services-us">Services</a>
                      </li>
+                     
                      <li class="nav-item">
-                        <a class="nav-link" href="shop.html">Shop</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="services.html">Services</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="blog.html">Blog</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                     <a class="nav-link" href="#contact-us">Contact</a>
                      </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
                      <div class="login_bt">
                         <ul>
-                           <li class="active"><a href="{{route ('login')}}">admin</a></li>
+                           <li class="active"><a href="{{route ('register')}}">register</a></li>
                            <li><a href="{{route ('login')}}">Login</a></li>
                            <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                         </ul>
@@ -74,13 +68,14 @@
             </nav>
          </div>
          <!-- banner section start --> 
-         <div class="banner_section layout_padding">
+
+         <div class="banner_section layout_padding" id="home-us">
             <div class="container">
                <div class="row">
                   <div class="col-md-6">
-                     <h1 class="banner_taital">SELL EVERY OLD THINGS & <span style="color: #2b2b2b;">BUY NEW</span></h1>
-                     <p class="banner_text">It is a long established fact that a reader will be distracted by the readable c</p>
-                     <div class="started_text"><a href="#">Read More</a></div>
+                     <h1 class="banner_taital">Website dengan Layanan laundry terbaik <span style="color: #2b2b2b;"></span></h1>
+                     <p class="banner_text">Pesan sekarang dan dapatkan layanan terbaik</p>
+                     <div class="started_text"><a href="#">lihat lebih lanjut</a></div>
                      <div class="play_icon"><img src="{{ asset('landing/images/play-icon.png') }}"></div>
                   </div>
                   <div class="col-md-6">
@@ -111,63 +106,36 @@
       </div>
       <!-- header section end -->
       <!-- select box section start -->
-      <div class="container">
-         <div class="select_box_section">
-            <div class="select_box_main">
-               <div class="row">
-                  <div class="col-md-4 select-outline">
-                     <input type="text" class="enter_bt" placeholder="Enter Keywords" name="Enter Keywords">
-                  </div>
-                  <div class="col-md-4 select-outline">
-                     <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
-                        <option value="" disabled selected>All Categoris</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                     </select>
-                  </div>
-                  <div class="col-md-4 select-outline">
-                     <select class="mdb-select md-form md-outline colorful-select dropdown-primary">
-                        <option value="" disabled selected>Your Lucation</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                     </select>
-                  </div>
-               </div>
-            </div>
-            <div class="search_btn"><a href="#">Search Now</a></div>
-         </div>
-      </div>
+     
       <!-- services section start -->
-      <div class="services_section layout_padding">
+      <div class="services_section layout_padding" id=services-us>
          <div class="container">
             <div class="row">
                <div class="col-md-4">
-                  <h1 class="services_taital">Ads Services</h1>
-                  <p class=" services_text">Page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
+                  <h1 class="services_taital">Services</h1>
+                  <p class=" services_text">berikut adalah beberapa layanan yang sudah tersedia di website ini</p>
                   <div class="readmore_btn"><a href="#">Read More</a></div>
                </div>
                <div class="col-md-8">
                   <h1 class="services_taital">
                      <div class="services_box">
                         <div class="services_box_left">
-                           <h5 class="fashion_text">Automotive</h5>
-                           <div><img src="{{ asset('landing/images/icon-1.png') }}"></div>
+                           <h5 class="fashion_text">cuci pakaian</h5>
+                           <div><img src="https://smartlink.id/wp-content/uploads/2023/08/usaha-laundry-kecil-kecilan.jpeg"></div>
                         </div>
                         <div class="services_box_right">
-                           <h5 class="fashion_text">Fashion</h5>
-                           <div><img src="{{ asset('landing/images/icon-2.png') }}"></div>
+                           <h5 class="fashion_text">strika pakaian</h5>
+                           <div><img src="https://www.sakulaundry.com/wp-content/uploads/2022/08/setrika34.jpg"></div>
                         </div>
                      </div>
                      <div class="services_box_2">
                         <div class="services_box_left">
-                           <h5 class="fashion_text">Automotive</h5>
-                           <div><img src="{{ asset('landing/images/icon-3.png') }}"></div>
+                           <h5 class="fashion_text">pengantaran kulir</h5>
+                           <div><img src="https://www.sakulaundry.com/wp-content/uploads/2024/05/lau-revisi-1080x675.jpg"></div>
                         </div>
                         <div class="services_box_right">
-                           <h5 class="fashion_text">Fashion</h5>
-                           <div><img src="{{ asset('landing/images/icon-4.png') }}"></div>
+                           <h5 class="fashion_text">pencucian dengan harum sepanjang hari</h5>
+                           <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5a4bS57-k3yKo6tW7r8HIatDl43mE18PrGw&s"></div>
                         </div>
                      </div>
                   </h1>
@@ -177,120 +145,16 @@
       </div>
       <!-- services section end -->
       <!-- shop section start -->
-      <div class="blog_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <h1 class="blog_taital">PREMIUM ADVERTISEMENT</h1>
-               </div>
-            </div>
-            <div class="blog_section_2">
-               <div id="main_slider" class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner">
-                     <div class="carousel-item active">
-                        <div class="row">
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img.png') }}"></div>
-                              <h6 class="number_text">01</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img1.png') }}"></div>
-                              <h6 class="number_text">02</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img2.png') }}"></div>
-                              <h6 class="number_text">03</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="carousel-item">
-                        <div class="row">
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img.png') }}"></div>
-                              <h6 class="number_text">01</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img1.png') }}"></div>
-                              <h6 class="number_text">02</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img2.png') }}"></div>
-                              <h6 class="number_text">03</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="carousel-item">
-                        <div class="row">
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img.png') }}"></div>
-                              <h6 class="number_text">01</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img1.png') }}"></div>
-                              <h6 class="number_text">02</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="blog_img"><img src="{{ asset('landing/images/blog-img2.png') }}"></div>
-                              <h6 class="number_text">03</h6>
-                              <div class="callnow_btn">
-                                 <div class="chat_bt"><a href="#">Chat Now</a></div>
-                                 <div class="call_bt active"><a href="#">Call Now</a></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-                  <i class="fa fa-angle-left"></i>
-                  </a>
-                  <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-                  <i class="fa fa-angle-right"></i>
-                  </a>
-               </div>
-            </div>
-         </div>
-      </div>
+     
       <!-- shop section end -->
       <!-- about section start -->
-      <div class="about_section layout_padding">
+      <div class="about_section layout_padding" id="about-us">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-6 padding_left0">
                   <div class="about_taital_main">
                      <h1 class="about_taital">About Us</h1>
-                     <h6 class="about_text">ARE YOU READY FOR THE POSTING YOUR ADS</h6>
+                     <h6 class="about_text">Selamat datang di kurni laundry, penyedia layanan laundry berkualitas yang siap membantu Anda dalam merawat pakaian dengan penuh perhatian. Kami berdedikasi untuk memberikan layanan yang cepat, bersih, dan terpercaya, sehingga Anda dapat menikmati pakaian yang segar dan wangi tanpa harus khawatir.S</h6>
                      <div class="btn_main">
                         <div class="started_bt"><a href="#">Get Started</a></div>
                         <div class="buy_bt active"><a href="#">Buy Now</a></div>
@@ -305,55 +169,7 @@
       </div>
       <!-- about section end -->
       <!-- pricing section start -->
-      <div class="pricing_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <h1 class="pricing_taital">FIND Price A PLAN</h1>
-               </div>
-            </div>
-            <div class="pricing_section_2">
-               <div class="row">
-                  <div class="col-md-4">
-                     <div class="pricing_box">
-                        <h6 class="regular_text">Regular</h6>
-                        <div class="taital_main">
-                           <h3 class="dolor_text">$</h3>
-                           <h1 class="dolor_text_1">30</h1>
-                           <p class="month_text">/Per Month</p>
-                        </div>
-                        <p class="using_text">using 'Content here, content here', making it look like readable</p>
-                        <div class="readmore_bt"><a  href="#">Read More</a></div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="pricing_box active">
-                        <h6 class="regular_text">Standra</h6>
-                        <div class="taital_main">
-                           <h3 class="dolor_text">$</h3>
-                           <h1 class="dolor_text_1">30</h1>
-                           <p class="month_text">/Per Month</p>
-                        </div>
-                        <p class="using_text">using 'Content here, content here', making it look like readable</p>
-                        <div class="readmore_bt active"><a  href="#">Read More</a></div>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="pricing_box">
-                        <h6 class="regular_text">Prenium</h6>
-                        <div class="taital_main">
-                           <h3 class="dolor_text">$</h3>
-                           <h1 class="dolor_text_1">30</h1>
-                           <p class="month_text">/Per Month</p>
-                        </div>
-                        <p class="using_text">using 'Content here, content here', making it look like readable</p>
-                        <div class="readmore_bt"><a  href="#">Read More</a></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+   
       <!-- pricing section end -->
       <!-- customer section end -->
       <div class="customer_section layout_padding">
@@ -443,11 +259,11 @@
       </div>
       <!-- customer section end -->
       <!-- contact section start -->
-      <div class="contact_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12">
-                  <h1 class="contact_taital contact_heading">Contact Us</h1>
+      <div class="contact_section layout_padding" id="contact-us">
+      <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <h1 class="contact_taital contact_heading">Contact Us</h1>
                </div>
             </div>
             <div class="contact_section_2">

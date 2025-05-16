@@ -30,14 +30,32 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
+
+          @if ($errors->any())
+          <div class="alert alert-danger mt-3">
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+            
+          @if(session('success'))
+    <div class="alert alert-success mt-3">
+        {{ session('success') }}
+    </div>
+@endif
           <form class="m-t" role="form" action="" method="POST">
           @csrf
+        
           <div>
+            
 
                
 
 
               <h1>Login</h1>
+      
               <div>
               <input name="email" value="{{ old('email') }}" type="email" class="form-control" placeholder="email" >
               </div>
@@ -69,40 +87,59 @@
         </div>
 
         <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form>
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
-              </div>
+  <section class="login_content">
+    <form method="POST" action="{{ route('register') }}">
+      @csrf
+      <h1>Create Account</h1>
 
-              <div class="clearfix"></div>
+      <div>
+        <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" value="{{ old('name') }}" required />
+      </div>
+      <div>
+        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required />
+      </div>
+      <div>
+        <input type="password" name="password" class="form-control" placeholder="Password" required />
+      </div>
+      <div>
+        <input type="password" name="password_confirmation" class="form-control" placeholder="Konfirmasi Password" required />
+      </div>
 
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
+      <!-- Dropdown Pilih Outlet -->
+      <div>
+        <select name="outlet_id" class="form-control" required>
+          <option value="">-- Pilih Outlet --</option>
+          @foreach ($outlets as $outlet)
+            <option value="{{ $outlet->id }}" {{ old('outlet_id') == $outlet->id ? 'selected' : '' }}>
+              {{ $outlet->nama_outlet }}
+            </option>
+          @endforeach
+        </select>
+      </div>
 
-                <div class="clearfix"></div>
-                <br />
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary submit">Daftar</button>
+      </div>
 
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
+      <div class="clearfix"></div>
+
+      <div class="separator">
+        <p class="change_link">Sudah punya akun?
+          <a href="#signin" class="to_register"> Login </a>
+        </p>
+
+        <div class="clearfix"></div>
+        <br />
+
+        <div>
+          <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+          <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>
         </div>
+      </div>
+    </form>
+  </section>
+</div>
+
       </div>
     </div>
   </body>

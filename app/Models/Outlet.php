@@ -12,6 +12,7 @@ class Outlet extends Model
         'nama_outlet',
         'alamat',
         'telepon',
+        'foto',
     ];
 
     public function users()
@@ -30,6 +31,10 @@ class Outlet extends Model
     }
 
     public function promo_outlets()
+    {
+        return $this->hasMany(PromoOutlet::class);
+    }
+    public function promos()
     {
         return $this->hasMany(PromoOutlet::class);
     }

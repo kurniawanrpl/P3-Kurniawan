@@ -12,32 +12,39 @@ class userSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin Satu',
-            'email' => 'admin@laundry.com',
-            'password' => Hash::make('password'),
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('123456'),
             'role' => 'admin',
             'outlet_id' => 1,
         ]);
 
         User::create([
             'name' => 'Supervisor Satu',
-            'email' => 'supervisor@laundry.com',
-            'password' => Hash::make('password'),
+            'email' => 'supervisor@gmail.com',
+            'password' => Hash::make('123456'),
             'role' => 'supervisor',
             'outlet_id' => 1,
         ]);
 
         User::create([
             'name' => 'Karyawan Satu',
-            'email' => 'karyawan@laundry.com',
-            'password' => Hash::make('password'),
+            'email' => 'karyawan@gmail.com',
+            'password' => Hash::make('123456'),
             'role' => 'karyawan',
             'outlet_id' => 1,
         ]);
 
         User::create([
             'name' => 'Owner Satu',
-            'email' => 'owner@laundry.com',
-            'password' => Hash::make('password'),
+            'email' => 'owner@gmail.com.com',
+            'password' => Hash::make('123456'),
+            'role' => 'owner',
+            'outlet_id' => 1,
+        ]);
+        User::create([
+            'name' => 'pengguna',
+            'email' => 'pengguna@gmail.com',
+            'password' => Hash::make('123456'),
             'role' => 'owner',
             'outlet_id' => 1,
         ]);

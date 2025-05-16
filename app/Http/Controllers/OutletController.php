@@ -9,60 +9,102 @@ class OutletController extends Controller
     // Menampilkan semua outlet
     public function index()
     {
-        $data = Outlet::all();
-        return view('outlets.index', compact('data'));
+        $outlets = Outlet::all();
+        $temp_outlets = session('temp_outlets', []);
+        return view('outlets.index', compact('outlets', 'temp_outlets'));
     }
 
-    // Menyimpan data sementara ke session
-    public function storeTemp(Request $request)
+    public function store(Request $request)
     {
-        $outlet = $request->only(['nama_outlet', 'alamat', 'telepon']);
-        $outlets = session('outlets', []);
-        $outlets[] = $outlet;
-        session(['outlets' => $outlets]);
-
-        return redirect()->route('outlets.index');
-    }
-
-    // Menyimpan semua data sementara ke database
-    public function saveTemp()
-    {
-        $outlets = session('outlets', []);
-        foreach ($outlets as $outletData) {
-            Outlet::create($outletData);
+        $request->validate([
+            'nama_outlet' => 'required',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+    
+        $data = $request->only(['nama_outlet', 'alamat', 'telepon']);
+    
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/outlet'), $filename);
+            $data['foto'] = $filename;
         }
-        session()->forget('outlets');
-
-        return redirect()->route('outlets.index');
+    
+        $temp_outlets = session('temp_outlets', []);
+        $temp_outlets[] = $data;
+        session(['temp_outlets' => $temp_outlets]);
+    
+        return redirect()->back()->with('success', 'Data ditambahkan ke daftar sementara.');
     }
-
-    // Menghapus semua data sementara
-    public function resetTemp()
+    public function simpan()
     {
-        session()->forget('outlets');
-        return redirect()->route('outlets.index');
+        $temp_outlets = session('temp_outlets', []);
+        foreach ($temp_outlets as $item) {
+            Outlet::create($item);
+        }
+        session()->forget('temp_outlets');
+
+        return redirect()->back()->with('success', 'Data berhasil disimpan ke database.');
     }
 
-    // Menampilkan form untuk edit outlet
     public function edit($id)
     {
-        $editData = Outlet::findOrFail($id);
-        return view('outlets.index', compact('editData'));
-    }
-
-    // Memperbarui data outlet
-    public function update(Request $request, $id)
-    {
         $outlet = Outlet::findOrFail($id);
-        $outlet->update($request->only(['nama_outlet', 'alamat', 'telepon']));
-
-        return redirect()->route('outlets.index');
+        $outlets = Outlet::all();
+        $temp_outlets = session('temp_outlets', []);
+        return view('outlets.index', compact('outlets', 'temp_outlets', 'outlet'));
     }
 
-    // Menghapus outlet
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'nama_outlet' => 'required',
+        'alamat' => 'required',
+        'telepon' => 'required',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
+
+    $data = $request->only(['nama_outlet', 'alamat', 'telepon']);
+
+    if ($request->hasFile('foto')) {
+        $file = $request->file('foto');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('uploads/outlet'), $filename);
+        $data['foto'] = $filename;
+    }
+
+    Outlet::findOrFail($id)->update($data);
+
+    return redirect()->route('outlets.index')->with('success', 'Data berhasil diperbarui.');
+}
     public function destroy($id)
     {
-        Outlet::destroy($id);
-        return redirect()->route('outlets.index');
+        Outlet::findOrFail($id)->delete();
+        return redirect()->route('outlets.index')->with('success', 'Data berhasil dihapus.');
     }
+
+    public function hapusSementara($index)
+    {
+        $temp_outlets = session('temp_outlets', []);
+        unset($temp_outlets[$index]);
+        session(['temp_outlets' => array_values($temp_outlets)]);
+
+        return redirect()->back()->with('success', 'Data sementara berhasil dihapus.');
+    }
+    
+
+    public function resetSementara()
+    {
+        session()->forget('temp_outlets');
+        return redirect()->back()->with('success', 'Daftar sementara berhasil di-reset.');
+    }
+    public function confirmDelete($id)
+{
+    $outlet = Outlet::findOrFail($id);
+    $outlets = Outlet::all();
+    $temp_outlets = session('temp_outlets', []);
+    return view('outlets.index', compact('outlet', 'outlets', 'temp_outlets'));
+}
 }

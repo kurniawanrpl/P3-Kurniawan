@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('role', ['admin', 'supervisor', 'karyawan', 'owner']);
+            $table->enum('role', ['admin', 'supervisor', 'petugas', 'owner','pengguna']);
             $table->foreignId('outlet_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });

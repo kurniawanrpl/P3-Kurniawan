@@ -13,14 +13,19 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('telepon');
-            $table->text('alamat');
+          
+            $table->unsignedBigInteger('user_id')->nullable(); // tambahkan dulu kolomnya
+            
             $table->decimal('saldo', 12, 2)->default(0);
             $table->foreignId('outlet_id')->constrained()->onDelete('cascade');
+            $table->string('midtrans_order_id')->unique()->nullable();
+            $table->string('midtrans_payment_status')->nullable(); // atau bisa pakai enum nanti
             $table->timestamps();
+        
+            // Foreign key setelah definisi kolom
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
-    
+        
     }
 
     /**
